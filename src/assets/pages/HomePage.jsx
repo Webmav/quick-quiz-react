@@ -10,6 +10,7 @@ import Score from '/src/assets/components/Score.jsx';
 
 export default function HomePage() {
     const [applicantId, setApplicantId] = useState("");
+
     const [isDetailsSubmitted, setIsDetailsSubmitted] = useState(false);
     const [isFirstSubmitted, setIsFirstSubmitted] = useState(false);
     const [isSecondSubmitted, setIsSecondSubmitted] = useState(false);
@@ -19,26 +20,35 @@ export default function HomePage() {
     const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
 
     async function newApplicant(newApplicant) {
-        const res = await fetch('/api/applicants', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }, 
-            body: JSON.stringify(newApplicant)
-        })
+        try{
+            const res = await fetch('/api/applicants', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }, 
+                body: JSON.stringify(newApplicant)
+            })
 
-        if(!res.ok) console.error("Could not fetch data.")
+            if(!res.ok) {
+                console.error("Could not fetch data.")
+                return;
+            }
 
-        const data = await res.json()
+            const data = await res.json()
 
-        setApplicantId(data.id)
+            setApplicantId(data.id)
+            setIsDetailsSubmitted(true)
+        }
+        catch(error) {
+            console.error("Error in fetching : ", error)
+        }
     }
 
     return(
         <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
-            { ( (!isDetailsSubmitted) && (!isFirstSubmitted)) ? <Details detailsSubmitted={newApplicant}/> : <First applicantId={applicantId}/> }
+            { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
 
-            { ( (isDetailsSubmitted) && (!isFirstSubmitted) ) ? <First applicantId={applicantId}/> : ""  }
+            { ( (!isFirstSubmitted) && (isDetailsSubmitted) ) ? <First applicantId={applicantId}/> : ""  }
 
             { ( (isFirstSubmitted) && (!isSecondSubmitted) ) ? <Second applicantId={applicantId}/> : ""  }
 

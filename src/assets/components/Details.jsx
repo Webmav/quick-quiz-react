@@ -6,6 +6,9 @@ export default function Details({ detailsSubmitted }) {
 
     function detailsFormSubmit(e) {
         e.preventDefault()
+        e.stopPropagation()
+
+        if (!name || !email) return alert("Enter name and email");
 
         const newApplicant = {
             name,
@@ -20,8 +23,7 @@ export default function Details({ detailsSubmitted }) {
             id="details-wrapper"
             className="flex items-center justify-center min-w-[250px] h-[650px]"
         >
-            <form 
-                onSubmit={detailsFormSubmit}
+            <div 
                 className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]"
             >
                 <h3 className="justify-self-center">Your Details : </h3>
@@ -53,11 +55,12 @@ export default function Details({ detailsSubmitted }) {
                         className='bg-[#01eeee] hover:bg-[#01d8d8] hover:text-yellow-100 rounded px-3 py-1 border'
                         id="startButton"
                         type="submit"
+                        onClick={detailsFormSubmit}
                     >
                         Start
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     )
 }

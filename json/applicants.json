@@ -1,0 +1,130 @@
+{
+  "applicants": [
+    {
+      "name": "afd",
+      "email": "asdf@fdsa",
+      "id": "-YA7QI0jayc"
+    },
+    {
+      "name": "afds",
+      "email": "asfdasg@gdsfahd",
+      "id": "LC9sPHpiPN0"
+    },
+    {
+      "name": "asfd",
+      "email": "afsdsadf@sfda",
+      "id": "fqbJF49J--4"
+    },
+    {
+      "name": "afsd",
+      "email": "afsd@safd.com",
+      "id": "hLTL4XR4ITk"
+    },
+    {
+      "name": "k",
+      "email": "jhvu@gfhgjhklk",
+      "id": "JN6e8dk-0wY"
+    },
+    {
+      "name": "asfd",
+      "email": "afsd@dfas",
+      "id": "7bculsowNSA"
+    },
+    {
+      "name": "afsd",
+      "email": "afsd@safd.com",
+      "id": "Z7iNeNPMB3I"
+    },
+    {
+      "name": "dgf",
+      "email": "ss@af",
+      "id": "x6lUuoml1RE"
+    },
+    {
+      "name": "asfd",
+      "email": "asdf@fdsa",
+      "id": "WGWbNqbliRM"
+    },
+    {
+      "name": "asfd",
+      "email": "adf@a",
+      "id": "KTk4vsthS1o"
+    },
+    {
+      "name": "ads",
+      "email": "asdf@adsf",
+      "id": "-UQXiii9mIk"
+    },
+    {
+      "name": "asdf",
+      "email": "ad2@adfs",
+      "id": "ruKbDnJT-zo"
+    },
+    {
+      "name": "asdf",
+      "email": "ASa@safd",
+      "id": "RYb2yhnhzUE"
+    },
+    {
+      "name": "asfd",
+      "email": "afsd@safd.com",
+      "id": "z70BI7g3kco"
+    },
+    {
+      "name": "afsd",
+      "email": "fdsW@ag",
+      "id": "WZuEDxv2X6A"
+    },
+    {
+      "name": "afsd",
+      "email": "afsd@dfas",
+      "id": "STtJGe3IOuc"
+    },
+    {
+      "name": "asf",
+      "email": "afsa@f",
+      "id": "70WhADUMpl4"
+    },
+    {
+      "name": "af",
+      "email": "afsd@dfas",
+      "id": "lJ-iVbfM7Fk"
+    },
+    {
+      "name": "adsf",
+      "email": "afsd@safd.com",
+      "id": "QigLgBmTnJ4"
+    },
+    {
+      "name": "af",
+      "email": "afsd@dsfad",
+      "id": "Shu4ZOFGSTA"
+    },
+    {
+      "name": "lhk",
+      "email": "hkg@FHD",
+      "id": "F4OMSvbuBZw"
+    },
+    {
+      "name": "afsd",
+      "email": "asfdasg@gdsfahd",
+      "id": "Ra5OGxChL-U"
+    },
+    {
+      "name": "asfd",
+      "email": "asfdasg@gdsfahd",
+      "id": "DIERuBkxWvI"
+    },
+    {
+      "name": "asfd",
+      "email": "asfdsafd@ffads",
+      "id": "OPPY9xpt1oI"
+    },
+    {
+      "name": "aasdf",
+      "email": "afsd@safd.com",
+      "id": "PBpiMWrnriI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
