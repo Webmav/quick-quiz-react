@@ -18,8 +18,9 @@ export default function HomePage() {
     const [isFourthSubmitted, setIsFourthSubmitted] = useState(false);
     const [isFifthSubmitted, setIsFifthSubmitted] = useState(false);
     const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
-
-    const [score, setScore] = useState(0);
+    
+    const [reset, setReset] = useState(false);
+    const [score, setScore] = useState(10);
 
 //Adding new applicant to server
     async function newApplicant(newApplicant) {
@@ -47,6 +48,40 @@ export default function HomePage() {
         }
     }
 
+//Patching last score
+    async function scorePatch() {
+        const lastScore = {
+            score,
+        }
+
+        try {
+            const res = await fetch(`/api/applicants/${applicantId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(lastScore)
+            })
+        } catch(error) {
+            console.error("Could not fetch data due to : ", error)
+        }
+    }
+
+    if(reset) {
+        setApplicantId("");
+
+        setIsDetailsSubmitted(false);
+        setIsFirstSubmitted(false);
+        setIsSecondSubmitted(false);
+        setIsThirdSubmitted(false);
+        setIsFourthSubmitted(false);
+        setIsFifthSubmitted(false);
+        setIsScoreSubmitted(false);
+        
+        setReset(false);
+        setScore(0);
+    }
+
     return(
         <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
             { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
@@ -56,7 +91,7 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         firstSubmitted={ (e) => { 
                             setIsFirstSubmitted(true); 
-                            { ((e === "delhi") || (e === "Delhi") || (e === "DELHI")) && setScore(score + 1) }
+                            { ((e === "delhi") || (e === "Delhi") || (e === "DELHI")) && setScore(score + 10) }
                             console.log(e)
                         } } 
                     /> 
@@ -68,7 +103,7 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         secondSubmitted={ (e) => { 
                             setIsSecondSubmitted(true); 
-                            { ((e === "jupiter") || (e === "Jupiter")) || (e === "JUPITER") && setScore(score + 1)}
+                            { ((e === "jupiter") || (e === "Jupiter")) || (e === "JUPITER") && setScore(score + 10)}
                             console.log(score)
                         } } 
                     /> 
@@ -80,7 +115,7 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         thirdSubmitted={ (e) => { 
                             setIsThirdSubmitted(true); 
-                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 1) }
+                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 10) }
                         } } 
                     /> 
                 : ""  
@@ -91,7 +126,7 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         fourthSubmitted={ (e) => { 
                             setIsFourthSubmitted(true); 
-                            { ((e === "green") || (e === "Green") || (e === "GREEN")) && setScore(score + 1) }
+                            { ((e === "green") || (e === "Green") || (e === "GREEN")) && setScore(score + 10) }
                         } } 
                     /> 
                 : ""  
@@ -102,7 +137,8 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         fifthSubmitted={ (e) => { 
                             setIsFifthSubmitted(true); 
-                            { ((e === "366") || (e === "Three Hundred Sixty Six") || (e === "three hundred sixty six")) && setScore(score + 1) }
+                            { ((e === "366") || (e === "Three Hundred Sixty Six") || (e === "three hundred sixty six")) && setScore(score + 10) };
+                            scorePatch()
                         } } 
                     /> 
                 : ""  
@@ -113,12 +149,14 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         scoreSubmitted={ (e) => { 
                             setIsScoreSubmitted(true); 
-                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 1) }
+                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 10) }
                         } } 
-                        score={score}
+                        reset={ (e) => {
+                            ( e === "yes") && setReset(true)
+                        } }
                     /> 
                 : ""  
             }
-        </div>
+        </div> 
     )
 }

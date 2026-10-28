@@ -305,6 +305,48 @@
       "third": "afsd",
       "fourth": "green",
       "fifth": "366"
+    },
+    {
+      "name": "munawar",
+      "email": "afsd@safd.com",
+      "id": "2jmdkr85Wi8",
+      "first": "delhi",
+      "second": "india",
+      "third": "paris",
+      "fourth": "green",
+      "fifth": "366"
+    },
+    {
+      "name": "afsd",
+      "email": "afsdfads",
+      "id": "eUvXwVP2hbA",
+      "first": "afsd",
+      "second": "afsd",
+      "third": "afds",
+      "fourth": "green",
+      "fifth": "366"
+    },
+    {
+      "name": "afsd",
+      "email": "afsd@dfas",
+      "id": "9XCZp01rVgc",
+      "first": "afsd",
+      "second": "jupiter",
+      "third": "paris",
+      "fourth": "green",
+      "fifth": "366",
+      "score": 12
+    },
+    {
+      "name": "munawar",
+      "email": "adf@a",
+      "id": "-gXTuQ2uS5U",
+      "first": "afsd",
+      "second": "jupiter",
+      "third": "afds",
+      "fourth": "afsd",
+      "fifth": "335",
+      "score": 10
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
