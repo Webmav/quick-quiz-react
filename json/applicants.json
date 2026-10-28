@@ -347,6 +347,17 @@
       "fourth": "afsd",
       "fifth": "335",
       "score": 10
+    },
+    {
+      "name": "asfd",
+      "email": "afsd@dfas",
+      "id": "yiw7p_gQvmE",
+      "first": "afsd",
+      "second": "jupiter",
+      "third": "paris",
+      "fourth": "green",
+      "fifth": "366",
+      "score": 30
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
