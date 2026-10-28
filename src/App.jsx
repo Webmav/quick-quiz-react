@@ -4,6 +4,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom'
+
 import HomePage from './assets/pages/HomePage'
 import MainLayout from './assets/layouts/MainLayout'
 
@@ -16,5 +17,9 @@ const router = createBrowserRouter(
 )
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
 }

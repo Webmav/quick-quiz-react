@@ -1,5 +1,65 @@
 {
-    "applicants": [
-        
-    ]
+  "applicants": [
+    {
+      "name": "asfd",
+      "email": "afsd@dfas",
+      "id": "WYfLEib9X-g"
+    },
+    {
+      "name": "afsd",
+      "email": "asgdga@fa",
+      "id": "oaArqmsVBCM"
+    },
+    {
+      "name": "asd",
+      "email": "afsd@safd.com",
+      "id": "m28c4uht3o0"
+    },
+    {
+      "name": "afsd",
+      "email": "asdf@fdsa",
+      "id": "twx1nP8VslM"
+    },
+    {
+      "name": "afsd",
+      "email": "afsd@dfas",
+      "id": "Ohqy_uiYaqU"
+    },
+    {
+      "name": "asdf",
+      "email": "asf@fads",
+      "id": "UeUB_w3jc5c"
+    },
+    {
+      "name": "afds",
+      "email": "asfdasg@gdsfahd",
+      "id": "HuqYRg5IvD4"
+    },
+    {
+      "name": "afsd",
+      "email": "asfdasg@gdsfahd",
+      "id": "5ruNQHXniN8"
+    },
+    {
+      "name": "afsd",
+      "email": "fa@qa",
+      "id": "ITb_ElH7ZyI"
+    },
+    {
+      "name": "a",
+      "email": "afsd@dfas",
+      "id": "bs1UkzZQt6A"
+    },
+    {
+      "name": "afdsfa",
+      "email": "afsd@dfas",
+      "id": "xFf9oo_agow"
+    },
+    {
+      "name": "af",
+      "email": "afafa!@aeg",
+      "id": "cZ2AgNHNxUw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
