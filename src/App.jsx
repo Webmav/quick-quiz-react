@@ -1,30 +1,20 @@
-import Details from './assets/components/Details';
-import First from './assets/components/FirstQuestion';
-import Second from './assets/components/SecondQuestion';
-import Third from './assets/components/ThirdQuestion';
-import Fourth from './assets/components/FourthQuestion';
-import Fifth from './assets/components/FifthQuestion';
-import Score from './assets/components/Score';
-import Footer from './assets/components/Footer';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from 'react-router-dom'
+import HomePage from './assets/pages/HomePage'
+import MainLayout from './assets/layouts/MainLayout'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<MainLayout />}>
+      <Route path='/' element={<HomePage />} />
+    </Route>
+  )
+)
 
 export default function App() {
-  return(
-    <>
-            <Details />
-
-            <First />
-
-            <Second />
-
-            <Third />
-
-            <Fourth />
-
-            <Fifth />
-
-            <Score />
-            
-            <Footer />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
