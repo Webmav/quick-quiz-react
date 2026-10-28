@@ -1,14 +1,6 @@
 @import 'tailwindcss';
 
-div#first {
-    display:flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 1500px;
-    height: 650px;
-    min-width: 235px;
-}
-div#qOneDiv {
+/* div#qOneDiv {
     background-color: #00efef;
     align-items: center;
     width: 1500px;
@@ -145,4 +137,4 @@ div#scoreDiv {
     justify-content: center;
     align-items: center;
     margin: 5px 1px 1px 5px;
-}
+} */

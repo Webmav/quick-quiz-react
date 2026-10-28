@@ -19,6 +19,9 @@ export default function HomePage() {
     const [isFifthSubmitted, setIsFifthSubmitted] = useState(false);
     const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
 
+    const [score, setScore] = useState(0);
+
+//Adding new applicant to server
     async function newApplicant(newApplicant) {
         try{
             const res = await fetch('/api/applicants', {
@@ -48,7 +51,16 @@ export default function HomePage() {
         <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
             { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
 
-            { ( (!isFirstSubmitted) && (isDetailsSubmitted) ) ? <First applicantId={applicantId}/> : ""  }
+            { ( (!isFirstSubmitted) && (isDetailsSubmitted) ) 
+                ?   <First 
+                        applicantId={applicantId} 
+                        firstSubmitted={ (e) => { 
+                            setIsFirstSubmitted(true); 
+                            { { (e == "delhi") || (e == "Delhi") ? setScore(score++) : "" } }
+                        } } 
+                    /> 
+                : ""  
+            }
 
             { ( (isFirstSubmitted) && (!isSecondSubmitted) ) ? <Second applicantId={applicantId}/> : ""  }
 

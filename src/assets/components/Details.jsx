@@ -4,7 +4,7 @@ export default function Details({ detailsSubmitted }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("")
 
-    function detailsFormSubmit(e) {
+    function detailsSubmit(e) {
         e.preventDefault()
         e.stopPropagation()
 
@@ -19,13 +19,8 @@ export default function Details({ detailsSubmitted }) {
     }
 
     return(
-        <div 
-            id="details-wrapper"
-            className="flex items-center justify-center min-w-[250px] h-[650px]"
-        >
-            <div 
-                className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]"
-            >
+        <div className="flex items-center justify-center min-w-[250px] h-[650px]">
+            <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
                 <h3 className="justify-self-center">Your Details : </h3>
                 
                 <div className="flex justify-center items-center mx-[1px] my-[5px]">
@@ -53,9 +48,7 @@ export default function Details({ detailsSubmitted }) {
                 <div className="flex justify-center items-center mx-[1px] my-[5px]"> 
                     <button 
                         className='bg-[#01eeee] hover:bg-[#01d8d8] hover:text-yellow-100 rounded px-3 py-1 border'
-                        id="startButton"
-                        type="submit"
-                        onClick={detailsFormSubmit}
+                        onClick={detailsSubmit}
                     >
                         Start
                     </button>
