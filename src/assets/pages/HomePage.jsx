@@ -51,26 +51,38 @@ export default function HomePage() {
         <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
             { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
 
-            { ( (!isFirstSubmitted) && (isDetailsSubmitted) ) 
+            { ( (isDetailsSubmitted) && (!isFirstSubmitted) ) 
                 ?   <First 
                         applicantId={applicantId} 
                         firstSubmitted={ (e) => { 
                             setIsFirstSubmitted(true); 
-                            { { (e == "delhi") || (e == "Delhi") ? setScore(score++) : "" } }
+                            { { (e == "delhi") || (e == "Delhi") && setScore(score++) } }
                         } } 
                     /> 
                 : ""  
             }
 
-            { ( (isFirstSubmitted) && (!isSecondSubmitted) ) ? <Second applicantId={applicantId}/> : ""  }
+            { ( (isFirstSubmitted) && (!isSecondSubmitted) ) 
+                ?   <Second 
+                        applicantId={applicantId} 
+                        secondSubmitted={ (e) => { 
+                            setIsSecondSubmitted(true); 
+                            { { (e == "jupiter") || (e == "Jupiter") && setScore(score++) } }
+                        } } 
+                    /> 
+                : ""  
+            }
 
-            { ( (isSecondSubmitted) && (!isThirdSubmitted) ) ? <Third applicantId={applicantId}/> : ""  }
-
-            { ( (isThirdSubmitted) && (!isFourthSubmitted) ) ? <Fourth applicantId={applicantId}/> : ""  }
-
-            { ( (isFourthSubmitted) && (!isFifthSubmitted) ) ? <Fifth applicantId={applicantId}/> : ""  }
-
-            { ( (isFifthSubmitted) && (!isScoreSubmitted) ) ? <Score applicantId={applicantId}/> : ""  }
+            { ( (isSecondSubmitted) && (!isThirdSubmitted) ) 
+                ?   <Second 
+                        applicantId={applicantId} 
+                        secondSubmitted={ (e) => { 
+                            setIsSecondSubmitted(true); 
+                            { { (e == "jupiter") || (e == "Jupiter") && setScore(score++) } }
+                        } } 
+                    /> 
+                : ""  
+            }
         </div>
     )
 }

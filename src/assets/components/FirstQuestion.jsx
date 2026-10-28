@@ -5,7 +5,7 @@ export default function First({ applicantId, firstSubmitted }){
 
     async function firstSubmit() {
         const newFirst = {
-            first
+            first,
         }
 
         try {
