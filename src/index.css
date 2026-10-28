@@ -1,16 +1,5 @@
 @import 'tailwindcss';
 
-#footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 1500px;
-    height: 69px;
-    min-height: 69px;
-    min-width: 250px;
-    background-color:rgb(27, 27, 27);
-}
-
 div#first {
     display:flex;
     align-items: flex-start;
