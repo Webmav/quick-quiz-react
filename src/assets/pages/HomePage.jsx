@@ -56,7 +56,8 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         firstSubmitted={ (e) => { 
                             setIsFirstSubmitted(true); 
-                            { { (e == "delhi") || (e == "Delhi") && setScore(score++) } }
+                            { ((e === "delhi") || (e === "Delhi") || (e === "DELHI")) && setScore(score + 1) }
+                            console.log(e)
                         } } 
                     /> 
                 : ""  
@@ -67,19 +68,54 @@ export default function HomePage() {
                         applicantId={applicantId} 
                         secondSubmitted={ (e) => { 
                             setIsSecondSubmitted(true); 
-                            { { (e == "jupiter") || (e == "Jupiter") && setScore(score++) } }
+                            { ((e === "jupiter") || (e === "Jupiter")) || (e === "JUPITER") && setScore(score + 1)}
+                            console.log(score)
                         } } 
                     /> 
                 : ""  
             }
 
             { ( (isSecondSubmitted) && (!isThirdSubmitted) ) 
-                ?   <Second 
+                ?   <Third 
                         applicantId={applicantId} 
-                        secondSubmitted={ (e) => { 
-                            setIsSecondSubmitted(true); 
-                            { { (e == "jupiter") || (e == "Jupiter") && setScore(score++) } }
+                        thirdSubmitted={ (e) => { 
+                            setIsThirdSubmitted(true); 
+                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 1) }
                         } } 
+                    /> 
+                : ""  
+            }
+
+            { ( (isThirdSubmitted) && (!isFourthSubmitted) ) 
+                ?   <Fourth 
+                        applicantId={applicantId} 
+                        fourthSubmitted={ (e) => { 
+                            setIsFourthSubmitted(true); 
+                            { ((e === "green") || (e === "Green") || (e === "GREEN")) && setScore(score + 1) }
+                        } } 
+                    /> 
+                : ""  
+            }
+
+            { ( (isFourthSubmitted) && (!isFifthSubmitted) ) 
+                ?   <Fifth 
+                        applicantId={applicantId} 
+                        fifthSubmitted={ (e) => { 
+                            setIsFifthSubmitted(true); 
+                            { ((e === "366") || (e === "Three Hundred Sixty Six") || (e === "three hundred sixty six")) && setScore(score + 1) }
+                        } } 
+                    /> 
+                : ""  
+            }
+
+            { ( (isFifthSubmitted) && (!isScoreSubmitted) ) 
+                ?   <Score 
+                        applicantId={applicantId} 
+                        scoreSubmitted={ (e) => { 
+                            setIsScoreSubmitted(true); 
+                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 1) }
+                        } } 
+                        score={score}
                     /> 
                 : ""  
             }
