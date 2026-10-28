@@ -13,12 +13,13 @@ export default function Details({ detailsSubmitted }) {
         }
 
         detailsSubmitted(newApplicant)
-
-        console.log("success")
     }
 
     return(
-        <div className="flex items-center justify-center min-w-[250px] h-[650px]">
+        <div 
+            id="details-wrapper"
+            className="flex items-center justify-center min-w-[250px] h-[650px]"
+        >
             <form 
                 onSubmit={detailsFormSubmit}
                 className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]"

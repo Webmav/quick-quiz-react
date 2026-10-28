@@ -9,7 +9,14 @@ import Fifth from '/src/assets/components/FifthQuestion.jsx';
 import Score from '/src/assets/components/Score.jsx';
 
 export default function HomePage() {
-    const [applicantId, setApplicantId] = useState(null);
+    const [applicantId, setApplicantId] = useState("");
+    const [isDetailsSubmitted, setIsDetailsSubmitted] = useState(false);
+    const [isFirstSubmitted, setIsFirstSubmitted] = useState(false);
+    const [isSecondSubmitted, setIsSecondSubmitted] = useState(false);
+    const [isThirdSubmitted, setIsThirdSubmitted] = useState(false);
+    const [isFourthSubmitted, setIsFourthSubmitted] = useState(false);
+    const [isFifthSubmitted, setIsFifthSubmitted] = useState(false);
+    const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
 
     async function newApplicant(newApplicant) {
         const res = await fetch('/api/applicants', {
@@ -29,19 +36,19 @@ export default function HomePage() {
 
     return(
         <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
-            <Details detailsSubmitted={newApplicant}/>
+            { ( (!isDetailsSubmitted) && (!isFirstSubmitted)) ? <Details detailsSubmitted={newApplicant}/> : <First applicantId={applicantId}/> }
 
-            <First applicantId={applicantId}/>
+            { ( (isDetailsSubmitted) && (!isFirstSubmitted) ) ? <First applicantId={applicantId}/> : ""  }
 
-            <Second applicantId={applicantId}/>
+            { ( (isFirstSubmitted) && (!isSecondSubmitted) ) ? <Second applicantId={applicantId}/> : ""  }
 
-            <Third applicantId={applicantId}/>
+            { ( (isSecondSubmitted) && (!isThirdSubmitted) ) ? <Third applicantId={applicantId}/> : ""  }
 
-            <Fourth applicantId={applicantId}/>
+            { ( (isThirdSubmitted) && (!isFourthSubmitted) ) ? <Fourth applicantId={applicantId}/> : ""  }
 
-            <Fifth applicantId={applicantId}/>
+            { ( (isFourthSubmitted) && (!isFifthSubmitted) ) ? <Fifth applicantId={applicantId}/> : ""  }
 
-            <Score />
+            { ( (isFifthSubmitted) && (!isScoreSubmitted) ) ? <Score applicantId={applicantId}/> : ""  }
         </div>
     )
 }
