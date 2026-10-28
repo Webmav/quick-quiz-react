@@ -1,12 +1,5 @@
 @import 'tailwindcss';
 
-body {
-    font-family:'Times New Roman', Times, Serif;
-    display:flex;
-    background-color: rgb(151, 255, 255);
-    margin:0px;
-    flex-flow: row wrap;
-}
 #footer {
     display: flex;
     align-items: flex-end;
@@ -17,32 +10,6 @@ body {
     min-width: 250px;
     background-color:rgb(27, 27, 27);
 }
-
-
-div#details {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 1500px;
-    height: 650px;
-    min-width: 250px;
-}
-div#nGSubmitDiv {
-    background-color: cyan;
-    align-items: center;
-    width: 1500px;
-    height: 200px;
-    min-width: 200px;
-    padding: 10px 15px 10px 15px;
-    margin: 1px;
-}
-.nGSubmit {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 1px 1px 5px;
-}
-
 
 div#first {
     display:flex;

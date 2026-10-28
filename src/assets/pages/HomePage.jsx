@@ -8,7 +8,7 @@ import Score from '/src/assets/components/Score.jsx';
 
 export default function HomePage() {
     return(
-        <>
+        <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap'>
             <Details />
 
             <First />
@@ -22,6 +22,6 @@ export default function HomePage() {
             <Fifth />
 
             <Score />
-        </>
+        </div>
     )
 }
