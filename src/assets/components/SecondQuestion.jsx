@@ -3,8 +3,30 @@ import { useState } from 'react';
 export default function Second({ applicantId, secondSubmitted }) {
     const [second, setSecond] = useState("")
 
+// //for remote hosting
+//     async function secondSubmit() {
+//         await saveAnswer(applicantId, "second", second)
+//         secondSubmitted(second)
+//     }
+
+//for local hosting
     async function secondSubmit() {
-        await saveAnswer(applicantId, "second", second)
+        const newSecond = {
+            second,
+        }
+
+        try {
+            const res = await fetch(`/api/applicants/${applicantId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newSecond),
+            })
+        } catch(error) {
+            console.error("Could not fetch data due to : ", error)
+        }
+
         secondSubmitted(second)
     }
 

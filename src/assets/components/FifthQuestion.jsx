@@ -4,8 +4,30 @@ import { saveAnswer } from "../../lib/applicants";
 export default function Fifth({ applicantId, fifthSubmitted }) {
     const [fifth, setFifth] = useState("");
 
+// //for remote hosting
+//     async function fifthSubmit() {
+//         await saveAnswer(applicantId, "fifth", fifth)
+//         fifthSubmitted(fifth)
+//     }
+
+//for local hosting
     async function fifthSubmit() {
-        await saveAnswer(applicantId, "fifth", fifth)
+        const newFifth = {
+            fifth,
+        }
+
+        try {
+            const res = await fetch(`/api/applicants/${applicantId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newFifth),
+            })
+        } catch(error) {
+            console.error("Could not fetch data due to : ", error)
+        }
+
         fifthSubmitted(fifth)
     }
 

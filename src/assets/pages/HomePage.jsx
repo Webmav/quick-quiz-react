@@ -23,34 +23,68 @@ export default function HomePage() {
     const [reset, setReset] = useState(false);
     const [score, setScore] = useState(10);
 
-//Adding new applicant to server
+//Adding new applicant to server locally
     async function newApplicant(newApplicant) {
-        const { data, error } = await supabase
-            .from("applicants")
-            .insert(newApplicant)
-            .select()
-            .single()
-
-        if(error) {
-            console.error("Could not save applicant : ", error.message)
-            return
-        }
-
-        setApplicantId(data.id)
+        const res = await fetch('/api/applicants', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newApplicant)
+        })
         setIsDetailsSubmitted(true)
+        
+        const data = await res.json()
+        setApplicantId(data.id)
     }
 
-//Patching last score
-    async function scorePatch() {
-        const { error } = await supabase
-            .from("applicants")
-            .update({ score })
-            .eq("id", applicantId)
+// //Adding new applicant to server remotely
+//     async function newApplicant(newApplicant) {
+//         const { data, error } = await supabase
+//             .from("applicants")
+//             .insert(newApplicant)
+//             .select()
+//             .single()
 
-        if(error) {
-            console.error("Could not save score : ", error.message)
+//         if(error) {
+//             console.error("Could not save applicant : ", error.message)
+//             return
+//         }
+
+//         setApplicantId(data.id)
+//         setIsDetailsSubmitted(true)
+//     }
+
+//Patching last score locally
+    async function scorePatch() {
+        const lastScore = {
+            score,
+        }
+
+        try {
+            const res = await fetch(`/api/applicants/${applicantId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(lastScore)
+            })
+        } catch(error) {
+            console.error("Could not fetch data due to : ", error)
         }
     }
+
+// //Patching last score remotely
+//     async function scorePatch() {
+//         const { error } = await supabase
+//             .from("applicants")
+//             .update({ score })
+//             .eq("id", applicantId)
+
+//         if(error) {
+//             console.error("Could not save score : ", error.message)
+//         }
+//     }
 
     if(reset) {
         setApplicantId("");

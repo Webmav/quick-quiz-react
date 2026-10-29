@@ -4,8 +4,30 @@ import { saveAnswer } from '../../lib/applicants'
 export default function Fourth({ applicantId, fourthSubmitted }) {
     const [fourth, setFourth] = useState("");
 
+// //for remote hosting
+//     async function fourthSubmit() {
+//         await saveAnswer(applicantId, "fourth", fourth)
+//         fourthSubmitted(fourth)
+//     }
+
+//for local hosting
     async function fourthSubmit() {
-        await saveAnswer(applicantId, "fourth", fourth)
+        const newFourth = {
+            fourth,
+        }
+
+        try {
+            const res = await fetch(`/api/applicants/${applicantId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newFourth),
+            })
+        } catch(error) {
+            console.error("Could not fetch data due to : ", error)
+        }
+
         fourthSubmitted(fourth)
     }
 
