@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from '@vercel/analytics/react'
 
 import HomePage from './assets/pages/HomePage'
 import MainLayout from './assets/layouts/MainLayout'
@@ -22,6 +23,7 @@ export default function App() {
     <>
       <RouterProvider router={router} />
       <SpeedInsights />
+      <Analytics />
     </>
   )
 }
