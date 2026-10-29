@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from '../../lib/supabase'
 
 export default function Score({ applicantId, reset }) {
     const [score, setScore] = useState(0);
 
-    async function fifthSubmit() {
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`)
-            const data = await res.json()
+    useEffect(() => {
+        async function loadscore() {
+            const { data, error} = await supabase
+                .from('applicants')
+                .select('score')
+                .eq('id', applicantId)
+                .single()
+
+            if(error) {
+                console.error("Could not fetch score : ", error.message)
+                return
+            }
+
             setScore(data.score)
-
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
         }
-    }
 
-    fifthSubmit()
+        loadscore()
+    }, [applicantId])
 
     function resetFnct() {
         reset("yes")
@@ -25,7 +32,7 @@ export default function Score({ applicantId, reset }) {
             <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
                 <h3 className="justify-self-center">Your Score is : </h3>
 
-                <h1 className="justify-self-center text-[100px]"> {score} / 100 </h1>
+                <h1 className="justify-self-center text-[100px]"> {score} / 50 </h1>
 
                 <div className="flex justify-center items-center mx-[1px] my-[5px] gap-[25px]">
                     <button 

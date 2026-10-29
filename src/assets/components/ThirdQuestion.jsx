@@ -1,25 +1,11 @@
 import { useState } from 'react';
+import { saveAnswer } from '../../lib/applicants'
 
 export default function Third({ applicantId, thirdSubmitted }) {
     const [third, setThird] = useState("");
 
     async function thirdSubmit() {
-        const newThird = {
-            third,
-        }
-
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newThird)
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
-        }
-
+        await saveAnswer(applicantId, "third", third)
         thirdSubmitted(third)
     }
 

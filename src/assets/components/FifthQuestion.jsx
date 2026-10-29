@@ -1,25 +1,11 @@
 import { useState } from "react";
+import { saveAnswer } from "../../lib/applicants";
 
 export default function Fifth({ applicantId, fifthSubmitted }) {
     const [fifth, setFifth] = useState("");
 
     async function fifthSubmit() {
-        const newFifth = {
-            fifth,
-        }
-
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newFifth)
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
-        }
-
+        await saveAnswer(applicantId, "fifth", fifth)
         fifthSubmitted(fifth)
     }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '/src/lib/supabase.js'
 
 import Details from '/src/assets/components/Details.jsx';
 import First from '/src/assets/components/FirstQuestion.jsx';
@@ -24,46 +25,30 @@ export default function HomePage() {
 
 //Adding new applicant to server
     async function newApplicant(newApplicant) {
-        try{
-            const res = await fetch('/api/applicants', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }, 
-                body: JSON.stringify(newApplicant)
-            })
+        const { data, error } = await supabase
+            .from("applicants")
+            .insert(newApplicant)
+            .select()
+            .single()
 
-            if(!res.ok) {
-                console.error("Could not fetch data.")
-                return;
-            }
-
-            const data = await res.json()
-
-            setApplicantId(data.id)
-            setIsDetailsSubmitted(true)
+        if(error) {
+            console.error("Could not save applicant : ", error.message)
+            return
         }
-        catch(error) {
-            console.error("Error in fetching : ", error)
-        }
+
+        setApplicantId(data.id)
+        setIsDetailsSubmitted(true)
     }
 
 //Patching last score
     async function scorePatch() {
-        const lastScore = {
-            score,
-        }
+        const { error } = await supabase
+            .from("applicants")
+            .update({ score })
+            .eq("id", applicantId)
 
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(lastScore)
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
+        if(error) {
+            console.error("Could not save score : ", error.message)
         }
     }
 
