@@ -23,7 +23,7 @@ export default function App() {
     <>
       <RouterProvider router={router} />
       <SpeedInsights />
-      <Analytics />
+      <Analytics
     </>
   )
 }
