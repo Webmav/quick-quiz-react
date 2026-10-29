@@ -4,22 +4,7 @@ export default function Second({ applicantId, secondSubmitted }) {
     const [second, setSecond] = useState("")
 
     async function secondSubmit() {
-        const newSecond = {
-            second,
-        }
-
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newSecond),
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
-        }
-
+        await saveAnswer(applicantId, "second", second)
         secondSubmitted(second)
     }
 
