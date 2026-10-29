@@ -4,6 +4,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import HomePage from './assets/pages/HomePage'
 import MainLayout from './assets/layouts/MainLayout'
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <>
       <RouterProvider router={router} />
+      <SpeedInsights />
     </>
   )
 }
