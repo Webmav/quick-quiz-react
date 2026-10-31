@@ -32,6 +32,7 @@ export default function HomePage() {
             },
             body: JSON.stringify(newApplicant)
         })
+
         setIsDetailsSubmitted(true)
         
         const data = await res.json()
@@ -102,7 +103,7 @@ export default function HomePage() {
     }
 
     return(
-        <div className='flex m-0 bg-[#00ffff] flex-row flex-wrap w-full h-full'>
+        <div className='flex justify-center items-center m-0 bg-[#00ffff] flex-row flex-wrap w-full h-[700px] md:h-full'>
             { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
 
             { ( (isDetailsSubmitted) && (!isFirstSubmitted) ) 
