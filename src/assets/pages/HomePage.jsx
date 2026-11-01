@@ -106,7 +106,7 @@ export default function HomePage() {
     }
 
     return(
-        <div className='flex justify-center items-center m-0 bg-[#00ffff] flex-row flex-wrap w-full h-[700px] md:h-[700px]'>
+        <div className='flex justify-center items-center m-0 bg-[#00ffff] flex-row flex-wrap w-full h-[675px] md:h-[700px]'>
             { ( (!isDetailsSubmitted) && (!isFirstSubmitted) ) ? <Details detailsSubmitted={newApplicant} /> : "" }
 
             { ( (isDetailsSubmitted) && (!isFirstSubmitted) ) 
