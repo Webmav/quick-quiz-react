@@ -22,6 +22,7 @@ export default function HomePage() {
     
     const [reset, setReset] = useState(false);
     const [score, setScore] = useState(10);
+    const [scorePatched, setScorePatched] = useState(false);
 
 // //Adding new applicant to server locally
 //     async function newApplicant(newApplicant) {
@@ -81,10 +82,11 @@ export default function HomePage() {
             .from("applicants")
             .update({ score })
             .eq("id", applicantId)
-
         if(error) {
             console.error("Could not save score : ", error.message)
+            return;
         }
+        setScorePatched(true);
     }
 
     if(reset) {
@@ -100,6 +102,7 @@ export default function HomePage() {
         
         setReset(false);
         setScore(0);
+        setScorePatched(false);
     }
 
     return(
@@ -112,7 +115,6 @@ export default function HomePage() {
                         firstSubmitted={ (e) => { 
                             setIsFirstSubmitted(true); 
                             { ((e === "delhi") || (e === "Delhi") || (e === "DELHI")) && setScore(score + 10) }
-                            console.log(e)
                         } } 
                     /> 
                 : ""  
@@ -124,7 +126,6 @@ export default function HomePage() {
                         secondSubmitted={ (e) => { 
                             setIsSecondSubmitted(true); 
                             { ((e === "jupiter") || (e === "Jupiter")) || (e === "JUPITER") && setScore(score + 10)}
-                            console.log(score)
                         } } 
                     /> 
                 : ""  
@@ -158,19 +159,16 @@ export default function HomePage() {
                         fifthSubmitted={ (e) => { 
                             setIsFifthSubmitted(true); 
                             { ((e === "366") || (e === "Three Hundred Sixty Six") || (e === "three hundred sixty six")) && setScore(score + 10) };
-                            scorePatch()
                         } } 
                     /> 
                 : ""  
             }
 
+            { ( (isFifthSubmitted) && (!scorePatched) ) && scorePatch() }
+
             { ( (isFifthSubmitted) && (!isScoreSubmitted) ) 
                 ?   <Score 
                         applicantId={applicantId} 
-                        scoreSubmitted={ (e) => { 
-                            setIsScoreSubmitted(true); 
-                            { ((e === "paris") || (e === "Paris") || (e === "PARIS")) && setScore(score + 10) }
-                        } } 
                         reset={ (e) => {
                             ( e === "yes") && setReset(true)
                         } }

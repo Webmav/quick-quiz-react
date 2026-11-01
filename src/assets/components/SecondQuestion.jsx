@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { saveAnswer } from '../../lib/applicants.js'
 
 export default function Second({ applicantId, secondSubmitted }) {
     const [second, setSecond] = useState("")

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { saveAnswer } from "../../lib/applicants";
+import { saveAnswer } from "../../lib/applicants.js";
 
 export default function Fifth({ applicantId, fifthSubmitted }) {
     const [fifth, setFifth] = useState("");
@@ -41,7 +41,7 @@ export default function Fifth({ applicantId, fifthSubmitted }) {
                         type="number" 
                         name="fifthAnswer"
                         className="flex text-center hover:bg-[#01d8d8] items-center mx-[1px] my-[5px] px-3 py-1 rounded border border-gray-500 w-[125px]" 
-                        placeholder="Answer (Enter Number)" 
+                        placeholder="Answer" 
                         value={fifth}
                         onChange={ (e) => { setFifth(e.target.value) } }
                     />
