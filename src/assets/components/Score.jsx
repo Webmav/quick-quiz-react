@@ -44,7 +44,9 @@ export default function Score({ applicantId, reset }) {
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">
             <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
-                <h3 className="justify-self-center">Your Score is : </h3>
+                <div className="flex justify-center">
+                    <h3>Your Score is : </h3>
+                </div>
 
                 <h1 className="justify-self-center text-[100px]"> {score} / 50 </h1>
 
