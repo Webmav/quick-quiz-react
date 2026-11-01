@@ -3,38 +3,38 @@ import { useState, useEffect } from 'react';
 export default function Score({ applicantId, reset }) {
     const [score, setScore] = useState(0);
 
-// //for remote hosting
-//     useEffect(() => {
-//         async function loadscore() {
-//             const { data, error} = await supabase
-//                 .from('applicants')
-//                 .select('score')
-//                 .eq('id', applicantId)
-//                 .single()
+//for remote hosting
+    useEffect(() => {
+        async function loadscore() {
+            const { data, error} = await supabase
+                .from('applicants')
+                .select('score')
+                .eq('id', applicantId)
+                .single()
 
-//             if(error) {
-//                 console.error("Could not fetch score : ", error.message)
-//                 return
-//             }
+            if(error) {
+                console.error("Could not fetch score : ", error.message)
+                return
+            }
 
-//             setScore(data.score)
-//         }
-
-//         loadscore()
-//     }, [applicantId])
-
-//for local hosting
-    async function scoreShow() {
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`)
-            const data = await res.json()
             setScore(data.score)
-
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
         }
-    }
-    scoreShow()
+
+        loadscore()
+    }, [applicantId])
+
+// //for local hosting
+//     async function scoreShow() {
+//         try {
+//             const res = await fetch(`/api/applicants/${applicantId}`)
+//             const data = await res.json()
+//             setScore(data.score)
+
+//         } catch(error) {
+//             console.error("Could not fetch data due to : ", error)
+//         }
+//     }
+//     scoreShow()
 
     function resetFnct() {
         reset("yes")

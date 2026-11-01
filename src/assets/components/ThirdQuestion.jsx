@@ -4,32 +4,32 @@ import { saveAnswer } from '../../lib/applicants'
 export default function Third({ applicantId, thirdSubmitted }) {
     const [third, setThird] = useState("");
 
-// //for remote hosting
-//     async function thirdSubmit() {
-//         await saveAnswer(applicantId, "third", third)
-//         thirdSubmitted(third)
-//     }
-
-//for local hosting
+//for remote hosting
     async function thirdSubmit() {
-        const newThird = {
-            third,
-        }
-
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newThird),
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
-        }
-
+        await saveAnswer(applicantId, "third", third)
         thirdSubmitted(third)
     }
+
+// //for local hosting
+//     async function thirdSubmit() {
+//         const newThird = {
+//             third,
+//         }
+
+//         try {
+//             const res = await fetch(`/api/applicants/${applicantId}`, {
+//                 method: "PATCH",
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(newThird),
+//             })
+//         } catch(error) {
+//             console.error("Could not fetch data due to : ", error)
+//         }
+
+//         thirdSubmitted(third)
+//     }
 
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">

@@ -28,8 +28,8 @@ export default function App() {
   )
 }
 
+//Enter clicked
 //Add footer style 
 //Add nav style
 //toast
-//responsive
 //json to card (questions)

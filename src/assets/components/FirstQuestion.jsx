@@ -4,32 +4,32 @@ import { saveAnswer } from '../../lib/applicants'
 export default function First({ applicantId, firstSubmitted }){
     const [first, setFirst] = useState("")
 
-// //for remote hosting
-//     async function firstSubmit() {
-//         await saveAnswer(applicantId, "first", first)
-//         firstSubmitted(first)
-//     }
-
-//for local hosting
+//for remote hosting
     async function firstSubmit() {
-        const newFirst = {
-            first,
-        }
-
-        try {
-            const res = await fetch(`/api/applicants/${applicantId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newFirst),
-            })
-        } catch(error) {
-            console.error("Could not fetch data due to : ", error)
-        }
-
+        await saveAnswer(applicantId, "first", first)
         firstSubmitted(first)
     }
+
+// //for local hosting
+//     async function firstSubmit() {
+//         const newFirst = {
+//             first,
+//         }
+
+//         try {
+//             const res = await fetch(`/api/applicants/${applicantId}`, {
+//                 method: "PATCH",
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify(newFirst),
+//             })
+//         } catch(error) {
+//             console.error("Could not fetch data due to : ", error)
+//         }
+
+//         firstSubmitted(first)
+//     }
 
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">
