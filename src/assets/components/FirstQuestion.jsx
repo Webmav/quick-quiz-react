@@ -31,6 +31,12 @@ export default function First({ applicantId, firstSubmitted }){
 //         firstSubmitted(first)
 //     }
 
+    function enterPressed(e) {
+        if(e.key == 'Enter') {
+            firstSubmit()
+        }
+    }
+
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">
             <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
@@ -44,6 +50,7 @@ export default function First({ applicantId, firstSubmitted }){
                         placeholder="Answer" 
                         value={first}
                         onChange={ (e) => { setFirst(e.target.value) } }
+                        onKeyDown={enterPressed}
                     />
                 </div>
 

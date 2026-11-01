@@ -31,6 +31,12 @@ export default function Fourth({ applicantId, fourthSubmitted }) {
 //         fourthSubmitted(fourth)
 //     }
 
+    function enterPressed(e) {
+        if(e.key == 'Enter') {
+            fourthSubmit()
+        }
+    }
+
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">
             <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
@@ -44,6 +50,7 @@ export default function Fourth({ applicantId, fourthSubmitted }) {
                         placeholder="Answer" 
                         value={fourth}
                         onChange={ (e) => { setFourth(e.target.value) } }
+                        onKeyDown={enterPressed}
                     />
                 </div>
 

@@ -18,6 +18,19 @@ export default function Details({ detailsSubmitted }) {
         detailsSubmitted(newApplicant)
     }
 
+    function enterPressed(e) {
+        if(e.key == 'Enter') {
+            if (!name || !email) return alert("Enter name and email");
+
+            const newApplicant = {
+                name,
+                email,
+            }
+
+            detailsSubmitted(newApplicant)
+        }
+    }
+
     return(
         <div className="flex items-center justify-center min-w-[250px] h-[650px]">
             <div className="bg-[#00ffff] items-center w-[1500px] min-w-[200px] h-[200px] px-[15px] py-[10px] m-[1px]">
@@ -42,6 +55,7 @@ export default function Details({ detailsSubmitted }) {
                         placeholder="Gmail" 
                         value={email}
                         onChange={ (e) => { setEmail(e.target.value) } }
+                        onKeyDown={enterPressed}
                     />
                 </div>
                 
